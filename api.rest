@@ -1,0 +1,16 @@
+GET http://localhost:3000/api/subscribers/
+
+
+###
+GET http://localhost:3000/api/subscribers/68a1c369ee44db7ef8b435a3
+
+###
+POST http://localhost:3000/api/subscribers
+Content-Type: application/json
+
+{
+    "name": "Altamash Aseer New1",
+    "email": "william.a.wheeler@example-pet-store.com",
+    "subscribedToChannel": "WEB DEV"
+}
+
