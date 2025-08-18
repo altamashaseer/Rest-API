@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', getSubscriber, (req, res) => {
     // res.send('Get one subscriber: ' + req.params.id);
 
-    // res.send(res.subscriber);
+    // res.send(res.subscriber.name);
     res.json(res.subscriber);
 });
 
@@ -40,13 +40,30 @@ router.post('/', async (req, res) => {
 });
 
 // Updating one
-router.patch('/:id', (req, res) => {
-    res.send('Update');
+router.patch('/:id', getSubscriber, async (req, res) => {
+    if (req.body.name != null) {
+        res.subscriber.name = req.body.name;
+    }
+    if (req.body.subscribedToChannel != null) {
+        res.subscriber.subscribedToChannel = req.body.subscribedToChannel;
+    }
+    try {
+        const updatedSubscriber = await res.subscriber.save();
+        res.json(updatedSubscriber);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
 });
 
 // Deleting one
-router.delete('/:id', (req, res) => {
-    res.send('Delete');
+router.delete('/:id', getSubscriber, async (req, res) => {
+    try {
+        await res.subscriber.deleteOne();
+        res.json({ message: 'Deleted Subscriber' });
+
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
 });
 
 

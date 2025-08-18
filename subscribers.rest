@@ -1,0 +1,27 @@
+### GET ALL
+GET http://localhost:3000/api/subscribers/
+
+
+### GET ONE
+GET http://localhost:3000/api/subscribers/68a1c6962ab06c41dd91ab71
+
+### ADD
+POST http://localhost:3000/api/subscribers
+Content-Type: application/json
+
+{
+    "name": "Altamash Aseer New1",
+    "email": "william.a.wheeler@example-pet-store.com",
+    "subscribedToChannel": "WEB DEV"
+}
+
+### DELETE
+DELETE http://localhost:3000/api/subscribers/68a1c6962ab06c41dd91ab71
+
+### UPDATE 
+PATCH http://localhost:3000/api/subscribers/68a1c50fee44db7ef8b435a8
+Content-Type: application/json
+
+{
+    "name": "New name"
+}
